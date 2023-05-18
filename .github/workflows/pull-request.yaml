@@ -20,4 +20,12 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)  
+        run: docker build . --file Dockerfile --tag my-image-name:1
+      - name: Save Docker image  
+        run: docker save --output image.tar my-image-name:1
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v3
+        with:
+          name: docker-image
+          path: image.tar
+          retention-days: 1
