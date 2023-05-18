@@ -1,6 +1,6 @@
 FROM openjdk:17.0.2-jdk-slim-buster
-ADD DeliveryPointRatingDataServiceApplication.java .
-RUN javac DeliveryPointRatingDataServiceApplication.java
-CMD ["java", "DeliveryPointRatingDataServiceApplication"]
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
 
 
