@@ -1,7 +1,8 @@
 name: pull request
 
-pull_request:
-  branches: [ "main" ]
+on:
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build-image:

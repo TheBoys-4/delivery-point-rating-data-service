@@ -2,7 +2,7 @@ name: push
 
 on:
   push:
-
+    branches: [ '*' ]
 
 jobs:
   build:
