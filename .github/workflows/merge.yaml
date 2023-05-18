@@ -1,0 +1,11 @@
+name: Pull request
+
+on:
+  merge_group:
+    types: [checks_requested]
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
