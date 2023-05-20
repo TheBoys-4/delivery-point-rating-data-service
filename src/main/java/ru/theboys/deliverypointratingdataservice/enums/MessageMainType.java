@@ -1,5 +1,5 @@
 package ru.theboys.deliverypointratingdataservice.enums;
 
-public enum MessageSource {
-    TEST
+public enum MessageMainType {
+    RECEIVING_AN_ORDER
 }

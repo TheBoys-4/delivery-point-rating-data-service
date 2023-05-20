@@ -1,10 +1,9 @@
 package ru.theboys.deliverypointratingdataservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import ru.theboys.deliverypointratingdataservice.enums.LocationType;
 
 @Entity
@@ -13,13 +12,11 @@ import ru.theboys.deliverypointratingdataservice.enums.LocationType;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(of={"id","name","coordinate"})
 public class Location extends BaseModel {
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "parent_location_id", referencedColumnName = "id")
-    private Location parentLocation;
-
-    private String name;
-
+    private String administrativeDistrict;
+    private String district;
+    private String address;
     private String coordinate;
     
     @Enumerated(EnumType.ORDINAL)
