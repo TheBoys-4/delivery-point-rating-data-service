@@ -3,6 +3,7 @@ package ru.theboys.deliverypointratingdataservice.controller;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import ru.theboys.deliverypointratingdataservice.constants.ControllerConstants;
 import ru.theboys.deliverypointratingdataservice.entity.Message;
 import ru.theboys.deliverypointratingdataservice.entity.MessageType;
 import ru.theboys.deliverypointratingdataservice.service.MessageService;
@@ -10,7 +11,7 @@ import ru.theboys.deliverypointratingdataservice.service.MessageTypeService;
 
 import java.util.List;
 @RestController
-@RequestMapping("messageTypes")
+@RequestMapping(ControllerConstants.ROOT_PATH + "messageTypes")
 public class MessageTypeController {
     private final MessageTypeService messageTypeService;
 

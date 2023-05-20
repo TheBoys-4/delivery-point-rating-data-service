@@ -4,11 +4,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.theboys.deliverypointratingdataservice.constants.ControllerConstants;
 import ru.theboys.deliverypointratingdataservice.entity.Message;
 import ru.theboys.deliverypointratingdataservice.service.ImportService;
 
 @RestController
-@RequestMapping("import")
+@RequestMapping(ControllerConstants.ROOT_PATH + "import")
 public class ImportController {
     private final ImportService importService;
 

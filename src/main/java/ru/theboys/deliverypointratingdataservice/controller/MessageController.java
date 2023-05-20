@@ -1,18 +1,16 @@
 package ru.theboys.deliverypointratingdataservice.controller;
 
-import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import ru.theboys.deliverypointratingdataservice.constants.ControllerConstants;
 import ru.theboys.deliverypointratingdataservice.entity.Message;
-import ru.theboys.deliverypointratingdataservice.entity.Views;
-import ru.theboys.deliverypointratingdataservice.repository.MessageRepository;
 import ru.theboys.deliverypointratingdataservice.service.MessageService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("messages")
+@RequestMapping(ControllerConstants.ROOT_PATH + "messages")
 public class MessageController {
     private final MessageService messageService;
 
