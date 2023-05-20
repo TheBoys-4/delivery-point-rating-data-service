@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ru.theboys.deliverypointratingdataservice.enums.LocationType;
 
 @Entity
 @Table(name = "locations")
@@ -13,9 +14,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Location extends BaseModel {
-    enum LocationType {
-    }
-
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "parent_location_id", referencedColumnName = "id")
     private Location parentLocation;
