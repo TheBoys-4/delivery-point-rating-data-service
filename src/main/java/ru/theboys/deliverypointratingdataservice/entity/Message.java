@@ -1,6 +1,6 @@
 package ru.theboys.deliverypointratingdataservice.entity;
 
-
+import ru.theboys.deliverypointratingdataservice.enums.MessageSource;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,10 +16,6 @@ import java.util.Date;
 @Getter
 @Setter
 public class Message extends BaseModel {
-    enum MessageSource {
-
-    }
-
     private Date dateTime;
 
     private int score;
