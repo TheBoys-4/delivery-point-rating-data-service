@@ -13,17 +13,14 @@ import lombok.Setter;
 @Setter
 @Getter
 public class Client extends BaseModel {
-
     private String name;
 
-    @Column(name = "phone-number")
+    @Column(name = "phone_number")
     private String phoneNumber;
-    @Column(name = "e-mail")
+    @Column(name = "email")
     private String email;
 
     private String sex;
 
     private int age;
-
-
 }
