@@ -17,14 +17,13 @@ public class Location extends BaseModel {
     }
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "paren-parent-location", referencedColumnName = "id")
+    @JoinColumn(name = "parent_location_id", referencedColumnName = "id")
     private Location parentLocation;
 
     private String name;
 
     private String coordinate;
+    
     @Enumerated(EnumType.ORDINAL)
     private LocationType locationType;
-
-
 }
