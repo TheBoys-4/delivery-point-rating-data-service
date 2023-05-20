@@ -3,13 +3,14 @@ package ru.theboys.deliverypointratingdataservice.controller;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import ru.theboys.deliverypointratingdataservice.constants.ControllerConstants;
 import ru.theboys.deliverypointratingdataservice.entity.Location;
 import ru.theboys.deliverypointratingdataservice.service.LocationService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("locations")
+@RequestMapping(ControllerConstants.ROOT_PATH + "locations")
 public class LocationController {
     private final LocationService locationService;
 

@@ -1,6 +1,6 @@
-package ru.theboys.deliverypointratingdataservice.exception;
+package ru.theboys.deliverypointratingdataservice.constants;
 
-public class ExceptionMessageConstants {
+public class GlobalExceptionHandlerMessageConstants {
     public static final String BASE_MESSAGE = "Unexpected exception occurred. ";
     public static final String ENTITY_NOT_FOUND_MESSAGE = "Failed to find entity. ";
 }

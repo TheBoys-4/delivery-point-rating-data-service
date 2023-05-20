@@ -4,12 +4,13 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
+import ru.theboys.deliverypointratingdataservice.constants.ControllerConstants;
 import ru.theboys.deliverypointratingdataservice.entity.Client;
 import ru.theboys.deliverypointratingdataservice.service.ClientService;
 import java.util.List;
 
 @RestController
-@RequestMapping("clients")
+@RequestMapping(ControllerConstants.ROOT_PATH + "clients")
 public class ClientController {
     private final ClientService clientService;
 
