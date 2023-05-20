@@ -1,6 +1,8 @@
 package ru.theboys.deliverypointratingdataservice.controller;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
 import ru.theboys.deliverypointratingdataservice.entity.Client;
 import ru.theboys.deliverypointratingdataservice.service.ClientService;
@@ -33,8 +35,9 @@ public class ClientController {
 
     @PutMapping("{id}")
     public void updateClient(@PathVariable("id") String clientId, @RequestBody Client client) {
-        this.clientService.getClient(clientId);
-        this.clientService.addClient(client);
+        Client clientFromDB = this.clientService.getClient(clientId);
+        BeanUtils.copyProperties(client,clientFromDB,"id");
+        this.clientService.addClient(clientFromDB);
     }
 
     @DeleteMapping("{id}")
