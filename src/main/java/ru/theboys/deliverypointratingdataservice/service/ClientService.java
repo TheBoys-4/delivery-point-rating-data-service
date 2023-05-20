@@ -18,7 +18,7 @@ public class ClientService {
         this.clientRepository = clientRepository;
     }
 
-    public List<Client> getAllClientes() {
+    public List<Client> getAllClients() {
         return this.clientRepository.findAll();
     }
 
