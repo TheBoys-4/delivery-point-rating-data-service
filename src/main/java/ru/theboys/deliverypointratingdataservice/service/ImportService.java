@@ -15,7 +15,7 @@ import java.util.List;
 
 @Service
 public class ImportService {
-    private static final String SERIALIZE_FAILED = "Deserialize failed";
+    private static final String DERIALIZE_FAILED = "Deserialize failed";
     private final MessageRepository messageRepository;
 
     @Autowired
@@ -32,7 +32,7 @@ public class ImportService {
                 messageRepository.save(message);
             }
         } catch (JsonProcessingException e) {
-            throw new EntityNotFoundException(SERIALIZE_FAILED);
+            throw new EntityNotFoundException(DERIALIZE_FAILED);
         }
     }
 }
