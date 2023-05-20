@@ -27,6 +27,7 @@ public class Message extends BaseModel {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "location_id", referencedColumnName = "id")
     private Location location;
+    
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "vendor_id", referencedColumnName = "id")
     private Vendor vendor;
@@ -36,12 +37,11 @@ public class Message extends BaseModel {
     private Client client;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "domain_id", referencedColumnName = "id")
+    @JoinColumn(name = "message_type_id", referencedColumnName = "id")
     private MessageType messageType;
+    
     @Enumerated(EnumType.ORDINAL)
     private MessageSource messageSource;
 
     private String text;
-
-
 }
