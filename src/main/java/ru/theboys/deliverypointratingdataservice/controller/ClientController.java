@@ -6,10 +6,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
 import ru.theboys.deliverypointratingdataservice.entity.Client;
 import ru.theboys.deliverypointratingdataservice.service.ClientService;
-
 import java.util.List;
+
 @RestController
-@RequestMapping("clientes")
+@RequestMapping("clients")
 public class ClientController {
     private final ClientService clientService;
 
@@ -19,8 +19,8 @@ public class ClientController {
     }
 
     @GetMapping
-    public List<Client> getClientes() {
-        return this.clientService.getAllClientes();
+    public List<Client> getClients() {
+        return this.clientService.getAllClients();
     }
 
     @GetMapping("{id}")
@@ -36,7 +36,7 @@ public class ClientController {
     @PutMapping("{id}")
     public void updateClient(@PathVariable("id") String clientId, @RequestBody Client client) {
         Client clientFromDB = this.clientService.getClient(clientId);
-        BeanUtils.copyProperties(client,clientFromDB,"id");
+        BeanUtils.copyProperties(client, clientFromDB, "id");
         this.clientService.addClient(clientFromDB);
     }
 
