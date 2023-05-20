@@ -1,4 +1,4 @@
-package ru.theboys.deliverypointratingdataservice.entitiy;
+package ru.theboys.deliverypointratingdataservice.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

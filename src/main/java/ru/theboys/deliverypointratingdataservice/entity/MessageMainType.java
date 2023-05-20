@@ -1,4 +1,4 @@
-package ru.theboys.deliverypointratingdataservice.entitiy;
+package ru.theboys.deliverypointratingdataservice.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "message_source")
+@Table(name = "message_main_types")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MessageSource extends BaseModel {
+public class MessageMainType extends BaseModel {
     private String name;
 }

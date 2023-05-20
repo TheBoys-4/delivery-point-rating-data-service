@@ -1,4 +1,4 @@
-package ru.theboys.deliverypointratingdataservice.entitiy;
+package ru.theboys.deliverypointratingdataservice.entity;
 
 public final class Views {
     public interface IdName{}
