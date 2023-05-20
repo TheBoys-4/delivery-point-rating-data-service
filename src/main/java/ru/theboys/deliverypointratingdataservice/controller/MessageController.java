@@ -1,6 +1,7 @@
 package ru.theboys.deliverypointratingdataservice.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.theboys.deliverypointratingdataservice.entity.Message;
@@ -37,8 +38,9 @@ public class MessageController {
 
     @PutMapping("{id}")
     public void updateMessage(@PathVariable("id") String messageId, @RequestBody Message message) {
-        this.messageService.getMessage(messageId);
-        this.messageService.addMessage(message);
+        Message messageFromDB = this.messageService.getMessage(messageId);
+        BeanUtils.copyProperties(message,messageFromDB,"id");
+        this.messageService.addMessage(messageFromDB);
     }
 
     @DeleteMapping("{id}")

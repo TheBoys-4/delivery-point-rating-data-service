@@ -1,5 +1,6 @@
 package ru.theboys.deliverypointratingdataservice.controller;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.theboys.deliverypointratingdataservice.entity.Message;
@@ -8,6 +9,7 @@ import ru.theboys.deliverypointratingdataservice.service.MessageMainTypeService;
 import ru.theboys.deliverypointratingdataservice.service.MessageService;
 
 import java.util.List;
+
 @RestController
 @RequestMapping("messageMainTypes")
 public class MessageMainTypeController {
@@ -35,8 +37,9 @@ public class MessageMainTypeController {
 
     @PutMapping("{id}")
     public void updateMessageMainType(@PathVariable("id") String messageMainTypeId, @RequestBody MessageMainType messageMainType) {
-        this.messageMainTypeService.getMessageMainType(messageMainTypeId);
-        this.messageMainTypeService.addMessageMainType(messageMainType);
+        MessageMainType messageMainTypeFromDB = this.messageMainTypeService.getMessageMainType(messageMainTypeId);
+        BeanUtils.copyProperties(messageMainType, messageMainTypeFromDB, "id");
+        this.messageMainTypeService.addMessageMainType(messageMainTypeFromDB);
     }
 
     @DeleteMapping("{id}")

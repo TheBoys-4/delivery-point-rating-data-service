@@ -1,5 +1,6 @@
 package ru.theboys.deliverypointratingdataservice.controller;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.theboys.deliverypointratingdataservice.entity.Message;
@@ -35,8 +36,9 @@ public class VendorController {
 
     @PutMapping("{id}")
     public void updateVendor(@PathVariable("id") String vendorId, @RequestBody Vendor vendor) {
-        this.vendorService.getVendor(vendorId);
-        this.vendorService.addVendor(vendor);
+        Vendor vendorFromDB = this.vendorService.getVendor(vendorId);
+        BeanUtils.copyProperties(vendor, vendorFromDB, "id");
+        this.vendorService.addVendor(vendorFromDB);
     }
 
     @DeleteMapping("{id}")

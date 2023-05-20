@@ -1,11 +1,13 @@
 package ru.theboys.deliverypointratingdataservice.controller;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.theboys.deliverypointratingdataservice.entity.Location;
 import ru.theboys.deliverypointratingdataservice.service.LocationService;
 
 import java.util.List;
+
 @RestController
 @RequestMapping("locations")
 public class LocationController {
@@ -33,8 +35,9 @@ public class LocationController {
 
     @PutMapping("{id}")
     public void updateLocation(@PathVariable("id") String locationId, @RequestBody Location location) {
-        this.locationService.getLocation(locationId);
-        this.locationService.addLocation(location);
+        Location locationFromDB = this.locationService.getLocation(locationId);
+        BeanUtils.copyProperties(location, locationFromDB, "id");
+        this.locationService.addLocation(locationFromDB);
     }
 
     @DeleteMapping("{id}")
