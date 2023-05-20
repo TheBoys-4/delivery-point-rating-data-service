@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.theboys.deliverypointratingdataservice.entity.Message;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Service
 public class ImportService {
+    private static final String SERIALIZE_FAILED = "Deserialize failed";
     private final MessageRepository messageRepository;
 
     @Autowired
@@ -30,7 +32,7 @@ public class ImportService {
                 messageRepository.save(message);
             }
         } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+            throw new EntityNotFoundException(SERIALIZE_FAILED);
         }
     }
 }
