@@ -16,6 +16,6 @@ public class MessageType extends BaseModel {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "message_main_type", referencedColumnName = "id")
+    @JoinColumn(name = "message_main_type_id", referencedColumnName = "id")
     private MessageMainType messageMainType;
 }
