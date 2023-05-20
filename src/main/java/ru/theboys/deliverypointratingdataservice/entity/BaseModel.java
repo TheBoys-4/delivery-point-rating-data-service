@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Setter
 public abstract class BaseModel implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false)
     private String id;
 
