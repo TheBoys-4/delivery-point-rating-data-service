@@ -10,6 +10,7 @@ import ru.theboys.deliverypointratingdataservice.repo.CommentRepo;
 import java.util.List;
 
 @RestController
+@RequestMapping("comment")
 public class commentController {
 
     private final CommentRepo commentRepo;
