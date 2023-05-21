@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.6</version>
+        <version>3.1.0</version>
         <relativePath/>
     </parent>
 
@@ -17,10 +17,16 @@
     <description>delivery-point-rating-data-service</description>
 
     <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <java.version>17</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
         <spring.boot.version>3.1.0</spring.boot.version>
         <lombok.version>1.18.26</lombok.version>
         <postgresql.version>42.6.0</postgresql.version>
+        <openapi.version>2.1.0</openapi.version>
     </properties>
 
     <dependencies>
@@ -60,7 +66,7 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.1.0</version>
+            <version>${openapi.version}</version>
         </dependency>
 
         <!-- DB -->
@@ -70,7 +76,7 @@
             <version>${postgresql.version}</version>
         </dependency>
 
-        <!-- lombok  -->
+        <!-- Lombok  -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -85,6 +91,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
             </plugin>
         </plugins>
     </build>
