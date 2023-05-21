@@ -1,9 +1,7 @@
 package ru.theboys.deliverypointratingdataservice.controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import ru.theboys.deliverypointratingdataservice.constants.ControllerConstants;
 import ru.theboys.deliverypointratingdataservice.entity.Message;
 import ru.theboys.deliverypointratingdataservice.service.ImportService;
@@ -18,8 +16,9 @@ public class ImportController {
     }
 
     @PostMapping()
-    public void importFromJson(@RequestBody String JSON) {
-        this.importService.importJSON(JSON);
+    public void importFromJson(@RequestParam("file")MultipartFile file) {
+
+        this.importService.importJSON(file);
     }
 
 }
