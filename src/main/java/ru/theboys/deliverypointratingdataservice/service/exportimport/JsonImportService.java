@@ -1,4 +1,4 @@
-package ru.theboys.deliverypointratingdataservice.service;
+package ru.theboys.deliverypointratingdataservice.service.exportimport;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -18,26 +18,28 @@ import java.io.OutputStream;
 import java.util.List;
 
 @Service
-public class ImportService {
+public class JsonImportService {
     private static final String DESERIALIZATION_FAILED = "Deserialization failed";
+
+    private final ObjectMapper objectMapper;
     private final MessageRepository messageRepository;
 
     @Autowired
-    public ImportService(MessageRepository messageRepository) {
+    public JsonImportService(ObjectMapper objectMapper, MessageRepository messageRepository) {
+        this.objectMapper = objectMapper;
         this.messageRepository = messageRepository;
     }
 
-    public void importJSON(MultipartFile multipartFile){
-        ObjectMapper mapper = new ObjectMapper();
+    public void importJSON(MultipartFile multipartFile) {
         try {
-            File file = new File(multipartFile.getName()+"1");
+            File file = new File(multipartFile.getName() + "1");
 
             OutputStream os = new FileOutputStream(file);
             os.write(multipartFile.getBytes());
 
-            List<Message> messages = mapper.readerWithView(Views.Import.class).forType(new TypeReference<List<Message>>() {
+            List<Message> messages = objectMapper.readerWithView(Views.Import.class).forType(new TypeReference<List<Message>>() {
             }).readValue(file);
-            for(Message message:messages){
+            for (Message message : messages) {
                 messageRepository.save(message);
             }
         } catch (JsonProcessingException e) {
