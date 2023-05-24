@@ -32,7 +32,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ secrets.DOCKER_IMAGE_PATH }}
+          images: ${{ secrets.DOCKER_DATA_SERVICE_IMAGE_PATH }}
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
