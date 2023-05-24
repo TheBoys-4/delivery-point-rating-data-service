@@ -23,6 +23,16 @@ jobs:
           distribution: 'corretto'
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots package
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag delivery-point-rating-data-service:main
+      - name: Save Docker image
+        run: docker save --output delivery-point-rating-data-service.tar delivery-point-rating-data-service:main
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v3
+        with:
+          name: docker-image
+          path: delivery-point-rating-data-service.tar
+          retention-days: 30
       - name: Log in to the Container registry
         uses: docker/login-action@v2
         with:
