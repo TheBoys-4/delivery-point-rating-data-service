@@ -1,5 +1,6 @@
 package ru.theboys.deliverypointratingdataservice.entity;
 
+import ru.theboys.deliverypointratingdataservice.enums.MessageType;
 import ru.theboys.deliverypointratingdataservice.enums.MessageSource;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -32,8 +33,7 @@ public class Message extends BaseModel {
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     private Client client;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "message_type_id", referencedColumnName = "id")
+    @Enumerated(EnumType.ORDINAL)
     private MessageType messageType;
     
     @Enumerated(EnumType.ORDINAL)
