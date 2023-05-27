@@ -7,8 +7,3 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: update
-
-
-springdoc:
-  swagger-ui:
-    path: /api/delivery-point-rating/data-service/swagger-ui.html
