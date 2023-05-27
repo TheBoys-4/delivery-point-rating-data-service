@@ -18,10 +18,6 @@ env:
 jobs:
   build-and-push-docker-image:
     runs-on: ubuntu-latest
-    permissions:
-      actions: write
-      contents: write
-      packages: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -48,5 +44,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: latest
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
