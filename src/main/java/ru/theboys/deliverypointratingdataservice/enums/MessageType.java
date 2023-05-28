@@ -4,7 +4,7 @@ public enum MessageType {
     PRODUCT_DESCRIPTION("Описание товара"),
     PRODUCT_ORDERING("Оформление заказа"),
     PRODUCT_RECEIVING("Получение заказа"),
-    ORDER_CONDITION("Полученнный заказ"),
+    ORDER_CONDITION("Полученный заказ"),
     PRODUCT_CONDITION("Товар"),
     DELIVERY_POINT_CONDITION("Постамат"),
     DELIVERY("Доставка"),
