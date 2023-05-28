@@ -73,7 +73,7 @@ public class ExcelExportService implements ExportService {
             numberCell.setCellValue(messageNumber);
 
             Cell dateCell = row.createCell(1);
-            dateCell.setCellValue(message.getDateTime());
+            dateCell.setCellValue(message.getDateTime().toString());
 
             Cell sourceCell = row.createCell(2);
             sourceCell.setCellValue(message.getMessageSource().name());
@@ -87,29 +87,20 @@ public class ExcelExportService implements ExportService {
             Cell addressCell = row.createCell(5);
             addressCell.setCellValue(message.getLocation().getAddress());
 
-            //Cell entranceCell = row.createCell(6);
-            //entranceCell.setCellValue(message.getLocation().getEntrance());
-
-            Cell vendorCell = row.createCell(7);
+            Cell vendorCell = row.createCell(6);
             vendorCell.setCellValue(message.getVendor().getName());
 
-            Cell clientId = row.createCell(8);
+            Cell clientId = row.createCell(7);
             clientId.setCellValue(message.getClient().getId());
 
-            Cell messageStatus = row.createCell(9);
+            Cell messageStatus = row.createCell(8);
             messageStatus.setCellValue(message.getScore());
 
-            Cell messageMainType = row.createCell(10);
-            messageMainType.setCellValue(message.getMessageType().getMessageMainType().name());
+            Cell messageType = row.createCell(9);
+            messageType.setCellValue(message.getMessageType().value);
 
-            Cell messageType = row.createCell(11);
-            messageType.setCellValue(message.getMessageType().getName());
-
-            Cell messageText = row.createCell(12);
+            Cell messageText = row.createCell(10);
             messageText.setCellValue(message.getText());
-
-//            Cell action = row.createCell(13);
-//            action.setCellValue(message.getAction());
 
             messageNumber = messageNumber + 1;
         }
