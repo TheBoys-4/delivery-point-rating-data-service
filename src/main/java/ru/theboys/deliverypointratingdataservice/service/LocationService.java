@@ -2,6 +2,8 @@ package ru.theboys.deliverypointratingdataservice.service;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import ru.theboys.deliverypointratingdataservice.entity.Location;
 import ru.theboys.deliverypointratingdataservice.repository.LocationRepository;
@@ -18,8 +20,17 @@ public class LocationService {
         this.locationRepository = locationRepository;
     }
 
-    public List<Location> getAllLocations() {
-        return this.locationRepository.findAll();
+    public ResponseEntity<List<Location>> getAllLocations() {
+        HttpHeaders headers = new HttpHeaders();
+        List<Location> locations = this.locationRepository.findAll();
+        headers.add("Access-Control-Expose-Headers", "X-Total-Count");
+        headers.add("X-Total-Count", String.valueOf(locations.size()));
+
+        return ResponseEntity.ok()
+                .headers(headers)
+                .contentLength(locations.size())
+                .body(locations);
+
     }
 
     public Location getLocation(String locationId) {

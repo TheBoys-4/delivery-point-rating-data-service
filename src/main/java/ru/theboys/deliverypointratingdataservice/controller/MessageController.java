@@ -2,6 +2,7 @@ package ru.theboys.deliverypointratingdataservice.controller;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.theboys.deliverypointratingdataservice.constants.ControllerConstants;
 import ru.theboys.deliverypointratingdataservice.entity.Message;
@@ -10,6 +11,7 @@ import ru.theboys.deliverypointratingdataservice.service.MessageService;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping(ControllerConstants.ROOT_PATH + "messages")
 public class MessageController {
     private final MessageService messageService;
@@ -20,7 +22,7 @@ public class MessageController {
     }
 
     @GetMapping
-    public List<Message> getMessages() {
+    public ResponseEntity<List<Message>> getMessages() {
         return this.messageService.getAllMessages();
     }
 

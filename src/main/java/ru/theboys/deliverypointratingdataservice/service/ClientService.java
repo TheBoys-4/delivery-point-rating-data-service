@@ -2,6 +2,8 @@ package ru.theboys.deliverypointratingdataservice.service;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import ru.theboys.deliverypointratingdataservice.entity.Client;
 import ru.theboys.deliverypointratingdataservice.repository.ClientRepository;
@@ -18,8 +20,18 @@ public class ClientService {
         this.clientRepository = clientRepository;
     }
 
-    public List<Client> getAllClients() {
-        return this.clientRepository.findAll();
+    public ResponseEntity<List<Client>> getAllClients() {
+
+        HttpHeaders headers = new HttpHeaders();
+        List<Client> clients = this.clientRepository.findAll();
+        headers.add("Access-Control-Expose-Headers", "X-Total-Count");
+        headers.add("X-Total-Count", String.valueOf(clients.size()));
+
+        return ResponseEntity.ok()
+                .headers(headers)
+                .contentLength(clients.size())
+                .body(clients);
+
     }
 
     public Client getClient(String clientId) {

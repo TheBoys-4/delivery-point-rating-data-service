@@ -1,12 +1,11 @@
 package ru.theboys.deliverypointratingdataservice.entity;
 
-import jakarta.annotation.Nullable;
-import ru.theboys.deliverypointratingdataservice.enums.MessageSource;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ru.theboys.deliverypointratingdataservice.enums.MessageSource;
 import ru.theboys.deliverypointratingdataservice.enums.MessageType;
 
 import java.util.Date;
@@ -35,7 +34,6 @@ public class Message extends BaseModel {
     private Client client;
 
     @Enumerated(EnumType.ORDINAL)
-    @Nullable
     private MessageType messageType;
     
     @Enumerated(EnumType.ORDINAL)
