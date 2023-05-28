@@ -10,7 +10,7 @@ import ru.theboys.deliverypointratingdataservice.service.ClientService;
 import java.util.List;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "*")
 @RequestMapping(ControllerConstants.ROOT_PATH + "clients")
 public class ClientController {
     private final ClientService clientService;
