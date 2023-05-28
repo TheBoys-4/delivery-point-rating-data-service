@@ -39,5 +39,6 @@ public class Message extends BaseModel {
     @Enumerated(EnumType.ORDINAL)
     private MessageSource messageSource;
 
+    @Column(length=10485760)
     private String text;
 }
