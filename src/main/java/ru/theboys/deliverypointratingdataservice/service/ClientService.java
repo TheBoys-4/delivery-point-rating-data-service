@@ -29,7 +29,6 @@ public class ClientService {
 
         return ResponseEntity.ok()
                 .headers(headers)
-                .contentLength(clients.size())
                 .body(clients);
 
     }

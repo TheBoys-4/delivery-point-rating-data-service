@@ -28,7 +28,6 @@ public class LocationService {
 
         return ResponseEntity.ok()
                 .headers(headers)
-                .contentLength(locations.size())
                 .body(locations);
 
     }

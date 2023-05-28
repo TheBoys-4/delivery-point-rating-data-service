@@ -28,7 +28,6 @@ public class VendorService {
 
         return ResponseEntity.ok()
                 .headers(headers)
-                .contentLength(vendors.size())
                 .body(vendors);
     }
 

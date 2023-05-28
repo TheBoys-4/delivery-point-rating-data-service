@@ -30,7 +30,6 @@ public class MessageTypeController {
 
         return ResponseEntity.ok()
                 .headers(headers)
-                .contentLength(messageTypes.size())
                 .body(messageTypes);
     }
 
