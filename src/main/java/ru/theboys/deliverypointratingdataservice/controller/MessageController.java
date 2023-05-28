@@ -35,7 +35,6 @@ public class MessageController {
 
     @PostMapping()
     public void addMessage(@RequestBody RawMessage rawMessage) {
-
         Message message = MessageUtil.messageFromRaw(rawMessage);
 
         this.messageService.addMessage(message);

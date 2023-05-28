@@ -18,7 +18,7 @@ import java.io.OutputStream;
 import java.util.List;
 
 @Service
-public class JsonImportService {
+public class JsonImportService implements ImportService {
     private static final String DESERIALIZATION_FAILED = "Deserialization failed";
 
     private final ObjectMapper objectMapper;
@@ -30,15 +30,17 @@ public class JsonImportService {
         this.messageRepository = messageRepository;
     }
 
-    public void importJSON(MultipartFile multipartFile) {
+    public void importFile(MultipartFile multipartFile) {
         try {
-            File file = new File(multipartFile.getName() + "1");
+            File file = new File(multipartFile.getName());
 
             OutputStream os = new FileOutputStream(file);
             os.write(multipartFile.getBytes());
 
-            List<Message> messages = objectMapper.readerWithView(Views.Import.class).forType(new TypeReference<List<Message>>() {
-            }).readValue(file);
+            List<Message> messages = objectMapper.readerWithView(Views.Import.class)
+                    .forType(new TypeReference<List<Message>>() {
+                    })
+                    .readValue(file);
             for (Message message : messages) {
                 messageRepository.save(message);
             }

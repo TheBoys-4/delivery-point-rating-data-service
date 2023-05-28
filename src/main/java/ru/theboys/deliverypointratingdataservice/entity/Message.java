@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ru.theboys.deliverypointratingdataservice.enums.MessageSource;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -35,10 +36,11 @@ public class Message extends BaseModel {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "message_type_id")
-    private List<MessageType> messageType;
+    private List<MessageType> messageType = new ArrayList<>();
     
     @Enumerated(EnumType.ORDINAL)
     private MessageSource messageSource;
 
+    @Column(length=10485760)
     private String text;
 }
