@@ -11,7 +11,7 @@ import ru.theboys.deliverypointratingdataservice.service.LocationService;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 @RequestMapping(ControllerConstants.ROOT_PATH + "locations")
 public class LocationController {
     private final LocationService locationService;

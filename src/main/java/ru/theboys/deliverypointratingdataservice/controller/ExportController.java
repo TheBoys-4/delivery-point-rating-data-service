@@ -8,7 +8,7 @@ import ru.theboys.deliverypointratingdataservice.constants.ControllerConstants;
 import ru.theboys.deliverypointratingdataservice.service.ExportService;
 
 @RestController
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 @RequestMapping(ControllerConstants.ROOT_PATH + "export")
 public class ExportController {
     private final ExportService exportService;

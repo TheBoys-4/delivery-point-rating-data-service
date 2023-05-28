@@ -6,7 +6,7 @@ import ru.theboys.deliverypointratingdataservice.entity.Message;
 import ru.theboys.deliverypointratingdataservice.service.ImportService;
 
 @RestController
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 @RequestMapping(ControllerConstants.ROOT_PATH + "import")
 public class ImportController {
     private final ImportService importService;
