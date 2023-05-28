@@ -27,7 +27,7 @@ jobs:
           java-version: '17'
           distribution: 'corretto'
       - name: Build with Maven
-        run: mvn clean install
+        run: mvn --batch-mode --update-snapshots package
       - name: Log in to the Container registry
         uses: docker/login-action@v2
         with:
