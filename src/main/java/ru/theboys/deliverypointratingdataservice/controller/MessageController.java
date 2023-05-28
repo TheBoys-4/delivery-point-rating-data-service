@@ -23,7 +23,7 @@ public class MessageController {
         this.messageService = messageService;
     }
 
-    @GetMapping
+    @GetMapping(produces = "application/json")
     public ResponseEntity<List<Message>> getMessages() {
         return this.messageService.getAllMessages();
     }
