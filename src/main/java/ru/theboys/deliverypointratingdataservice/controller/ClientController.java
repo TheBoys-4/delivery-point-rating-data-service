@@ -1,5 +1,6 @@
 package ru.theboys.deliverypointratingdataservice.controller;
 
+import io.swagger.v3.oas.annotations.headers.Header;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -19,22 +20,31 @@ public class ClientController {
         this.clientService = clientService;
     }
 
+
     @GetMapping
+    /** Метод возвращающий всех клиентов
+     *  @return clients - список всех клиентов
+     */
     public List<Client> getClients() {
         return this.clientService.getAllClients();
     }
 
     @GetMapping("{id}")
+    /** Метод возвращающий клиента по его id
+     *  @return clients - клиент
+     */
     public Client getClientById(@PathVariable("id") String clientId) {
         return this.clientService.getClient(clientId);
     }
 
     @PostMapping()
+    /** Метод добавляющий клиента */
     public void addClient(@RequestBody Client client) {
         this.clientService.addClient(client);
     }
 
     @PutMapping("{id}")
+    /** Метод изменяющий данные клиента */
     public void updateClient(@PathVariable("id") String clientId, @RequestBody Client client) {
         Client clientFromDB = this.clientService.getClient(clientId);
         BeanUtils.copyProperties(client, clientFromDB, "id");
