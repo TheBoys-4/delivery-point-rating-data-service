@@ -6,9 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ru.theboys.deliverypointratingdataservice.enums.MessageSource;
-import ru.theboys.deliverypointratingdataservice.enums.MessageType;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "messages")
@@ -33,8 +33,9 @@ public class Message extends BaseModel {
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     private Client client;
 
-    @Enumerated(EnumType.ORDINAL)
-    private MessageType messageType;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "message_type_id")
+    private List<MessageType> messageType;
     
     @Enumerated(EnumType.ORDINAL)
     private MessageSource messageSource;

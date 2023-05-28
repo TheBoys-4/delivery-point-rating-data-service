@@ -6,7 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.theboys.deliverypointratingdataservice.constants.ControllerConstants;
 import ru.theboys.deliverypointratingdataservice.entity.Message;
+import ru.theboys.deliverypointratingdataservice.entity.RawMessage;
 import ru.theboys.deliverypointratingdataservice.service.MessageService;
+import ru.theboys.deliverypointratingdataservice.utils.MessageUtil;
 
 import java.util.List;
 
@@ -32,7 +34,10 @@ public class MessageController {
     }
 
     @PostMapping()
-    public void addMessage(@RequestBody Message message) {
+    public void addMessage(@RequestBody RawMessage rawMessage) {
+
+        Message message = MessageUtil.messageFromRaw(rawMessage);
+
         this.messageService.addMessage(message);
     }
 
