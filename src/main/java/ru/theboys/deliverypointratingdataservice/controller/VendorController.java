@@ -2,11 +2,10 @@ package ru.theboys.deliverypointratingdataservice.controller;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.theboys.deliverypointratingdataservice.constants.ControllerConstants;
-import ru.theboys.deliverypointratingdataservice.entity.Message;
 import ru.theboys.deliverypointratingdataservice.entity.Vendor;
-import ru.theboys.deliverypointratingdataservice.service.MessageService;
 import ru.theboys.deliverypointratingdataservice.service.VendorService;
 
 import java.util.List;
@@ -21,7 +20,7 @@ public class VendorController {
     }
 
     @GetMapping
-    public List<Vendor> getVendors() {
+    public ResponseEntity<List<Vendor>> getVendors() {
         return this.vendorService.getAllVendors();
     }
 

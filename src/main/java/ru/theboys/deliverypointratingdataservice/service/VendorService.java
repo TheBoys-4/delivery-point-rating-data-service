@@ -2,6 +2,8 @@ package ru.theboys.deliverypointratingdataservice.service;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import ru.theboys.deliverypointratingdataservice.entity.Vendor;
 import ru.theboys.deliverypointratingdataservice.repository.VendorRepository;
@@ -18,8 +20,15 @@ public class VendorService {
         this.vendorRepository = vendorRepository;
     }
 
-    public List<Vendor> getAllVendors() {
-        return this.vendorRepository.findAll();
+    public ResponseEntity<List<Vendor>> getAllVendors() {
+        HttpHeaders headers = new HttpHeaders();
+        List<Vendor> vendors = this.vendorRepository.findAll();
+        headers.add("X-Total-Count", String.valueOf(vendors.size()));
+
+        return ResponseEntity.ok()
+                .headers(headers)
+                .contentLength(vendors.size())
+                .body(vendors);
     }
 
     public Vendor getVendor(String vendorId) {

@@ -1,9 +1,8 @@
 package ru.theboys.deliverypointratingdataservice.controller;
 
-import io.swagger.v3.oas.annotations.headers.Header;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.theboys.deliverypointratingdataservice.constants.ControllerConstants;
 import ru.theboys.deliverypointratingdataservice.entity.Client;
@@ -25,7 +24,7 @@ public class ClientController {
     /** Метод возвращающий всех клиентов
      *  @return clients - список всех клиентов
      */
-    public List<Client> getClients() {
+    public ResponseEntity<List<Client>> getClients() {
         return this.clientService.getAllClients();
     }
 
