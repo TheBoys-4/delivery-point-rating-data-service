@@ -1,25 +1,31 @@
 package ru.theboys.deliverypointratingdataservice.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.theboys.deliverypointratingdataservice.constants.ControllerConstants;
-import ru.theboys.deliverypointratingdataservice.service.ExportService;
+import ru.theboys.deliverypointratingdataservice.service.exportimport.ExcelExportService;
+import ru.theboys.deliverypointratingdataservice.service.exportimport.JsonExportService;
 
 @RestController
-//@CrossOrigin(origins = "*")
 @RequestMapping(ControllerConstants.ROOT_PATH + "export")
 public class ExportController {
-    private final ExportService exportService;
+    private final JsonExportService jsonExportService;
+    private final ExcelExportService excelExportService;
 
-    public ExportController(ExportService exportService) {
-        this.exportService = exportService;
+    public ExportController(JsonExportService jsonExportService, ExcelExportService excelExportService) {
+        this.jsonExportService = jsonExportService;
+        this.excelExportService = excelExportService;
     }
 
-    @GetMapping
-    public String getClients() {
-        return this.exportService.export();
+    @GetMapping(value = "/json")
+    public ResponseEntity<byte[]> exportMessagesAsJson() {
+        return this.jsonExportService.export();
     }
 
+    @GetMapping(value = "/xlsx")
+    public ResponseEntity<byte[]> exportMessagesAsExcel() {
+        return this.excelExportService.export();
+    }
 }

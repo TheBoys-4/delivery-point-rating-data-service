@@ -27,6 +27,7 @@
         <lombok.version>1.18.26</lombok.version>
         <postgresql.version>42.6.0</postgresql.version>
         <openapi.version>2.1.0</openapi.version>
+        <apache.poi.version>5.2.3</apache.poi.version>
     </properties>
 
     <dependencies>
@@ -83,6 +84,20 @@
             <optional>true</optional>
             <version>${lombok.version}</version>
         </dependency>
+
+        <!-- Apache POI -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${apache.poi.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${apache.poi.version}</version>
+        </dependency>
+
 
     </dependencies>
 
