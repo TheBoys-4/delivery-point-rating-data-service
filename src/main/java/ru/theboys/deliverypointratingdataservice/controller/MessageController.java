@@ -11,6 +11,7 @@ import ru.theboys.deliverypointratingdataservice.service.MessageService;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping(ControllerConstants.ROOT_PATH + "messages")
 public class MessageController {
     private final MessageService messageService;

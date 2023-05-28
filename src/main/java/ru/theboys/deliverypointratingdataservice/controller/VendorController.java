@@ -10,6 +10,7 @@ import ru.theboys.deliverypointratingdataservice.service.VendorService;
 
 import java.util.List;
 @RestController
+@CrossOrigin("*")
 @RequestMapping(ControllerConstants.ROOT_PATH + "vendors")
 public class VendorController {
     private final VendorService vendorService;
