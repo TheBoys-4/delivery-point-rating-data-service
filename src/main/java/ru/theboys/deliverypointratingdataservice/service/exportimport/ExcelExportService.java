@@ -97,7 +97,7 @@ public class ExcelExportService implements ExportService {
             messageStatus.setCellValue(message.getScore());
 
             Cell messageType = row.createCell(9);
-            messageType.setCellValue(message.getMessageType().value);
+            messageType.setCellValue(message.getMessageType().toString());
 
             Cell messageText = row.createCell(10);
             messageText.setCellValue(message.getText());
