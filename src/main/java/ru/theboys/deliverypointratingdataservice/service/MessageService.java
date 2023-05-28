@@ -28,7 +28,6 @@ public class MessageService {
 
         return ResponseEntity.ok()
                 .headers(headers)
-                .contentLength(messages.size())
                 .body(messages);
     }
 
