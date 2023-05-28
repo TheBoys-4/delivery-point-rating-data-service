@@ -23,6 +23,7 @@ public class MessageService {
     public ResponseEntity<List<Message>> getAllMessages() {
         HttpHeaders headers = new HttpHeaders();
         List<Message> messages = this.messageRepository.findAll();
+        headers.add("Access-Control-Expose-Headers", "X-Total-Count");
         headers.add("X-Total-Count", String.valueOf(messages.size()));
 
         return ResponseEntity.ok()

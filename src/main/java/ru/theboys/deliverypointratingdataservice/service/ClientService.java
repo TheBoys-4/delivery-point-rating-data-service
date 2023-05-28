@@ -24,6 +24,7 @@ public class ClientService {
 
         HttpHeaders headers = new HttpHeaders();
         List<Client> clients = this.clientRepository.findAll();
+        headers.add("Access-Control-Expose-Headers", "X-Total-Count");
         headers.add("X-Total-Count", String.valueOf(clients.size()));
 
         return ResponseEntity.ok()

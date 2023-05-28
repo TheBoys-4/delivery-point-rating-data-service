@@ -23,6 +23,7 @@ public class LocationService {
     public ResponseEntity<List<Location>> getAllLocations() {
         HttpHeaders headers = new HttpHeaders();
         List<Location> locations = this.locationRepository.findAll();
+        headers.add("Access-Control-Expose-Headers", "X-Total-Count");
         headers.add("X-Total-Count", String.valueOf(locations.size()));
 
         return ResponseEntity.ok()

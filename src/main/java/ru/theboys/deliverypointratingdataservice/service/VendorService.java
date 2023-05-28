@@ -23,6 +23,7 @@ public class VendorService {
     public ResponseEntity<List<Vendor>> getAllVendors() {
         HttpHeaders headers = new HttpHeaders();
         List<Vendor> vendors = this.vendorRepository.findAll();
+        headers.add("Access-Control-Expose-Headers", "X-Total-Count");
         headers.add("X-Total-Count", String.valueOf(vendors.size()));
 
         return ResponseEntity.ok()
