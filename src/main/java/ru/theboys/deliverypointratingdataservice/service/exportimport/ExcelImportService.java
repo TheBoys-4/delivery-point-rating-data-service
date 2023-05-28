@@ -8,12 +8,21 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import ru.theboys.deliverypointratingdataservice.dataProcessing.DataProcessing;
+import ru.theboys.deliverypointratingdataservice.entity.Client;
+import ru.theboys.deliverypointratingdataservice.entity.Location;
 import ru.theboys.deliverypointratingdataservice.entity.Message;
+import ru.theboys.deliverypointratingdataservice.entity.Vendor;
+import ru.theboys.deliverypointratingdataservice.enums.LocationType;
+import ru.theboys.deliverypointratingdataservice.enums.MessageSource;
 import ru.theboys.deliverypointratingdataservice.repository.MessageRepository;
+import ru.theboys.deliverypointratingdataservice.utils.MessageUtil;
 
 import java.io.*;
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.Locale;
 
@@ -45,6 +54,9 @@ public class ExcelImportService implements ImportService {
                     Iterator<Cell> cellIterator = row.cellIterator();
 
                     Message message = new Message();
+                    message.setMessageSource(MessageSource.IMPORT);
+
+                    setMockData(message);
 
                     while (cellIterator.hasNext()) {
                         Cell cell = cellIterator.next();
@@ -59,6 +71,8 @@ public class ExcelImportService implements ImportService {
                                 break;
                         }
                     }
+                    DataProcessing.ClassificationByText(message);
+
                     messageRepository.save(message);
                 }
 
@@ -66,5 +80,12 @@ public class ExcelImportService implements ImportService {
         } catch (IOException | InvalidFormatException e) {
             throw new RuntimeException(EXCEL_IMPORT_ERROR + e.getMessage());
         }
+    }
+
+    private void setMockData(Message message) {
+        message.setDateTime(Date.valueOf(LocalDate.now()));
+        message.setClient(new Client("mockName", "mockNumber", "mockEmail", "mockSex", 22));
+        message.setVendor(new Vendor("mockVendor"));
+        message.setLocation(new Location("1", "2", "3", "4", LocationType.CITY));
     }
 }
